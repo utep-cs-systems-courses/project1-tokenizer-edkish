@@ -38,9 +38,7 @@ int non_space_char(char c){
 // * to first (non-space) char in first word in s
 
 char *word_start(char *str){
-  if(str[0] == '\0'){
-    return str;
-  }
+
   while(space_char(str[0])){  //skips whitespace
 
     if(str[0] == '\0'){   //if hits end string
@@ -69,7 +67,7 @@ char *word_terminator(char *word){
 
 
 
-  while(non_space_char(start[0]) && start[0] != '\0'){
+  while(non_space_char(start[0])){
 
     start++;
 
@@ -89,32 +87,40 @@ int count_words(char *str){
 
   str = word_start(str);
 
+
+
   int counter = 0;
 
   while(str[0] != '\0'){
 
     if(non_space_char(str[0])){ //counts characters
-      str = word_terminator(str);
+
       counter++;
 
     }
 
-    //str = word_terminator(str);
 
-    // str = word_start(str);
-    ++str;
+
+
+
+    str = word_terminator(str);
+
+    str = word_start(str);
+
   }
 
   printf("Counter: %d \n", counter);
 
-  return counter;
+  return counter-1;
 }
 
 
 
 char *copy_str(char *inStr, short len){
 
-  char* copy = (char*)malloc((len + 1) * sizeof(char));
+  char* copy = (char*)malloc((len + 1) * sizeof(inStr));
+
+
 
   //copy characters into 'copy' string
 
@@ -129,53 +135,67 @@ char *copy_str(char *inStr, short len){
   copy[i] = '\0';
 
 
+
   return copy;
 
 }
 
 
+
 char **tokenize(char* str){
-  
+
   //to not change value of str
-  
+
   char* temp = str;
-  
+
+
+
   //skips invalid chars
-  
+
   temp = word_start(temp);
-  
+
+
+
   //allocate memory for number of words + null
-  
+
   int numWords = count_words(temp);
-  
+
   char** tokenized = (char**)malloc((numWords + 1) * sizeof(char*));
-  
+
+
+
   //tokenizes string
+
   int i;
-  
+
   short counter;
-  
+
   for(i = 0; temp[0] != '\0'; i++){
-    
+
     //counts for length of a single word
-    
+
     for(counter = 0; non_space_char(temp[counter]) == 1; counter++);
-    
+
     tokenized[i] = copy_str(temp, counter);
-    
+
+
+
     //goes to next word
-    
+
     temp = word_terminator(temp);
-    
+
     temp = word_start(temp);
+
   }
-  
+
   //accounts for null character
-  
+
   tokenized[i] = (char*)malloc(sizeof(char));
-  
+
   tokenized[i][0] = '\0';
-  
+
+
+
   return tokenized;
 
 }
@@ -203,6 +223,8 @@ void print_tokens(char **tokens){
 void free_tokens(char **tokens){
 
   int i;
+
+
 
   //if not empty clear memory
 

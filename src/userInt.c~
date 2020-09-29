@@ -23,14 +23,14 @@ int main()
   char input[MAX];
   int id;
   while(1){
-    printf("\nType a command: 0,t,h,s \n $ ");
+    printf("Type a command: 0,t,h,s \n $ ");
     fgets(input, MAX, stdin);
     input[1] = '\0';
     if(strlen(input)==1 && input[0]=='0'){
       printf("Now exiting program \n");
       break;
     }
-      
+
     if(strlen(input)==1 && input[0]=='t'){ //t
       printf("Enter String to tokenize: \n");
       printf("$ ");
@@ -44,14 +44,14 @@ int main()
 
     if(strlen(input)==1 && input[0]=='h'){ //h
       printf("Print history");
+      printf("$ ");
       print_history(list);
     }
 
     if(strlen(input)==1 && input[0]=='s'){ //s
       printf("Enter sequence number: \n");
       printf("$ ");
-      scanf("%d", &id);
-      fflush(stdin);
+      scanf(" %d", &id);
       char* n = get_history(list, id);
       printf(n);
       printf("\n");
