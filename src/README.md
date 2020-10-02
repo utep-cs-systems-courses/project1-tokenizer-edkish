@@ -2,11 +2,11 @@ Project 1: Tokenizer
 ====================
 # Instructions:
 
-You should document your tokenizer in this file.
+> input 0 to end program
+> input t to tokenize
+> input h to print history
+> input s to print specific sequence
 
-This file is written in the refreshingly simple `markdown` text
-formatting language.
+>NOTE< bug occurs after sequence is printed causeing a statement to enter
+ commands to print once.
 
-To learn about text formatting using markdown, we encourage you to examine 
- - [../README.md](../README.md)
- - the online [Markdown Guide](https://www.markdownguide.org/).
