@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "tokenizer.h"
 
 
 //// true if c is a tab or space, and not zero
 
-int space_char(char c){
+int space_char (char c) {
 
   if(c == '\t' || c == ' '){
 
@@ -21,7 +21,7 @@ int space_char(char c){
 
 // true if c not a tab or space, and not zero
 
-int non_space_char(char c){
+int non_space_char (char c) {
 
   if(c != '\t' && c != ' '){
 
@@ -37,7 +37,7 @@ int non_space_char(char c){
 
 // * to first (non-space) char in first word in s
 
-char *word_start(char *str){
+char *word_start (char *str) {
   if(str[0] == '\0'){
     return str;
   }
@@ -52,9 +52,6 @@ char *word_start(char *str){
     str++;
 
   }
-
-
-
   return str;
 
 }
@@ -63,7 +60,7 @@ char *word_start(char *str){
 
 // * to char after end of word
 
-char *word_terminator(char *word){
+char *word_terminator (char *word) {
 
   char* start = word_start(word);
 
@@ -75,8 +72,6 @@ char *word_terminator(char *word){
 
   }
 
-
-
   return start;
 
 }
@@ -85,7 +80,7 @@ char *word_terminator(char *word){
 
 // the number of words in s
 
-int count_words(char *str){
+int count_words (char *str) {
 
   str = word_start(str);
 
@@ -99,20 +94,15 @@ int count_words(char *str){
 
     }
 
-    //str = word_terminator(str);
-
-    // str = word_start(str);
     ++str;
   }
-
-  printf("Counter: %d \n", counter);
 
   return counter;
 }
 
 
 
-char *copy_str(char *inStr, short len){
+char *copy_str (char *inStr, short len) {
 
   char* copy = (char*)malloc((len + 1) * sizeof(char));
 
@@ -121,20 +111,21 @@ char *copy_str(char *inStr, short len){
   int i;
 
   for(i = 0; i < len; i++){
-
+    if(inStr[i] == '\n'){
+      inStr[i] = '\0';
+	}
     copy[i] = inStr[i];
 
   }
 
   copy[i] = '\0';
 
-
   return copy;
 
 }
 
 
-char **tokenize(char* str){
+char **tokenize (char* str) {
   
   //to not change value of str
   
@@ -182,7 +173,7 @@ char **tokenize(char* str){
 
 
 
-void print_tokens(char **tokens){
+void print_tokens (char **tokens) {
 
   int i = 0;
 
@@ -200,7 +191,7 @@ void print_tokens(char **tokens){
 
 
 
-void free_tokens(char **tokens){
+void free_tokens (char **tokens) {
 
   int i;
 

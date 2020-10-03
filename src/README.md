@@ -7,6 +7,6 @@ Project 1: Tokenizer
 > input h to print history
 > input s to print specific sequence
 
->NOTE< bug occurs after sequence is printed causeing a statement to enter
- commands to print once.
+>NOTE< bug occurs after sequence is printed causeing a string to enter
+ commands to print.
 

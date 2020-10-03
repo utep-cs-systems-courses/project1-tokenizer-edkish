@@ -3,7 +3,7 @@
 #include "history.h"
 
 
-List* init_history(){
+List* init_history () {
 
   List* itemList;
 
@@ -15,10 +15,9 @@ List* init_history(){
 
 
 
-void add_history(List *list, char *str){
+void add_history (List *list, char *str) {
 
   Item* listCopy = list->root; //holds root
-
 
 
   //changes id to prev added nodes
@@ -27,7 +26,7 @@ void add_history(List *list, char *str){
 
   int i;
 
-  for(i=0;listCopy != NULL; i++){
+  for (i=0;listCopy != NULL; i++) {
 
     listCopy->id = i+2;
 
@@ -35,12 +34,9 @@ void add_history(List *list, char *str){
 
   }
 
-
-
   Item listItem;
 
   listItem.id = 1;
-
 
 
   //allocate memory and copy string into listItem string
@@ -49,7 +45,7 @@ void add_history(List *list, char *str){
 
   char* strCopy = str; //copy to not affect str
 
-  for(i = 0; strCopy[0] != '\0'; i++){
+  for (i = 0; strCopy[0] != '\0'; i++) {
 
     listItem.str[i] = strCopy[0];
 
@@ -58,9 +54,7 @@ void add_history(List *list, char *str){
   }
 
 
-
   listItem.next = list->root;
-
 
 
   list->root = malloc(sizeof(Item));
@@ -71,7 +65,7 @@ void add_history(List *list, char *str){
 
 
 
-char *get_history(List *list, int id){
+char *get_history (List *list, int id) {
 
   if(list->root == NULL){
 
@@ -95,7 +89,7 @@ char *get_history(List *list, int id){
 
 
 
-void print_history(List *list){
+void print_history (List *list) {
 
   if(list->root == NULL){
 
@@ -111,7 +105,7 @@ void print_history(List *list){
 
   Item* listCopy = list->root;
 
-  while(listCopy != NULL){
+  while (listCopy != NULL) {
 
     printf("----------------------\n");
 
@@ -129,7 +123,7 @@ void print_history(List *list){
 
 
 
-void free_history(List *list){
+void free_history (List *list) {
 
   Item* curr = list->root;
 

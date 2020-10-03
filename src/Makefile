@@ -1,3 +1,4 @@
-make: userInt.c
-	gcc -o userInt userInt.c
+make: userInt.c tokenizer.c history.c
+	gcc -o userInt userInt.c tokenizer.c history.c
+
 
